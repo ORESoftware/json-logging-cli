@@ -1,0 +1,46 @@
+version: 2
+
+project_name: json-logging-cli
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: json-logging-cli
+    main: ./cli
+    binary: json-logging-cli
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: default
+    builds:
+      - json-logging-cli
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- .Version }}_
+      {{- .Os }}_
+      {{- .Arch }}
+
+checksum:
+  name_template: checksums.txt
+
+homebrew_casks:
+  - name: json-logging-cli
+    ids:
+      - default
+    binaries:
+      - json-logging-cli
+    homepage: https://github.com/ORESoftware/json-logging-cli
+    description: Pretty-print JSON from stdin with ORESoftware json-logging
+    repository:
+      owner: ORESoftware
+      name: homebrew-tap
+    directory: Casks
