@@ -7,11 +7,11 @@ class JsonLoggingCli < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", "-o", bin/"json-logging-cli", "./cli"
+    system "go", "build", "-o", bin/"jlc", "./cmd/jlc"
   end
 
   test do
-    output = pipe_output("#{bin}/json-logging-cli", "{\"hello\":\"world\"}")
+    output = pipe_output("#{bin}/jlc", "{\"hello\":\"world\"}")
     assert_match "hello", output
     assert_match "world", output
   end

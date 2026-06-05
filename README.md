@@ -3,13 +3,19 @@
 Pretty-print JSON from stdin using [`github.com/oresoftware/json-logging`](https://github.com/ORESoftware/json-logging).
 
 ```bash
-echo '{"hello":"world","items":[1,2,3]}' | json-logging-cli
+echo '{"hello":"world","items":[1,2,3]}' | jlc
+```
+
+## Install
+
+```bash
+go install github.com/oresoftware/json-logging-cli/cmd/jlc@latest
 ```
 
 ## Build
 
 ```bash
-go build -o json-logging-cli ./cli
+go build -o jlc ./cmd/jlc
 ```
 
 ## Homebrew

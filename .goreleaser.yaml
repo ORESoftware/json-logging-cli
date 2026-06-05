@@ -8,8 +8,8 @@ before:
 
 builds:
   - id: json-logging-cli
-    main: ./cli
-    binary: json-logging-cli
+    main: ./cmd/jlc
+    binary: jlc
     env:
       - CGO_ENABLED=0
     goos:
@@ -37,7 +37,7 @@ homebrew_casks:
     ids:
       - default
     binaries:
-      - json-logging-cli
+      - jlc
     homepage: https://github.com/ORESoftware/json-logging-cli
     description: Pretty-print JSON from stdin with ORESoftware json-logging
     repository:
