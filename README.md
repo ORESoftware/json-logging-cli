@@ -6,6 +6,30 @@ Pretty-print JSON from stdin using [`github.com/oresoftware/json-logging`](https
 echo '{"hello":"world","items":[1,2,3]}' | jlc
 ```
 
+## Options
+
+`jlc` uses [`ORESoftware/flags-2-env`](https://github.com/ORESoftware/flags-2-env)
+with the project-local [`.cli-flags.toml`](./.cli-flags.toml) file. Runtime
+configuration is loaded by merging environment variables with parsed CLI flags;
+when both provide the same typed value, the CLI flag wins.
+
+```bash
+echo '{"hello":"world"}' | JLC_PRETTY_SIZE=40 jlc --pretty-size=0
+echo '{"hello":"world"}' | jlc --format=json --color=never
+jlc --input ./event.json --format=compact
+```
+
+Supported values:
+
+| CLI flag | Environment | Type | Description |
+| --- | --- | --- | --- |
+| `-s`, `--pretty-size`, `--size`, `--line-size` | `JLC_PRETTY_SIZE` | integer | Initial size passed to the json-logging pretty printer. |
+| `-f`, `--input`, `--input-file`, `--file` | `JLC_INPUT_FILE` | string | Read JSON from this file instead of stdin. |
+| `--format`, `--output-format` | `JLC_FORMAT` | string | Output format: `pretty`, `json`, or `compact`. |
+| `--color`, `--colors` | `JLC_COLOR` | string | Color mode: `auto`, `always`, or `never`. |
+| `--strict` | `JLC_STRICT` | bool | Reject trailing JSON after the first decoded value. Defaults to `true`; pass `--strict=false` to allow trailing data. |
+| `-h`, `--help` | `JLC_HELP` | bool | Print command usage and exit. |
+
 ## Install
 
 ```bash

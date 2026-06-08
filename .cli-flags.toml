@@ -1,0 +1,52 @@
+[help]
+url = "https://github.com/ORESoftware/json-logging-cli"
+columns = ["options", "env", "type", "description"]
+
+[parse]
+positionals_env = "JLC_POSITIONALS"
+unknown_options_env = "JLC_UNKNOWN_OPTIONS"
+errors_env = "JLC_PARSE_ERRORS"
+allow_unknown = false
+
+[flags.pretty_size]
+env = "JLC_PRETTY_SIZE"
+aliases = ["pretty-size", "size", "line-size"]
+short = "s"
+type = "integer"
+help = "Initial size passed to the json-logging pretty printer."
+
+[flags.input_file]
+env = "JLC_INPUT_FILE"
+aliases = ["input", "input-file", "file"]
+short = "f"
+type = "string"
+help = "Read JSON from this file instead of stdin."
+
+[flags.format]
+env = "JLC_FORMAT"
+aliases = ["format", "output-format"]
+type = "string"
+help = "Output format: pretty, json, or compact."
+
+[flags.color]
+env = "JLC_COLOR"
+aliases = ["color", "colors"]
+type = "string"
+help = "Color mode: auto, always, or never."
+
+[flags.strict]
+env = "JLC_STRICT"
+aliases = ["strict", "single", "single-value"]
+type = "bool"
+true_aliases = ["t", "1", "yes"]
+false_aliases = ["f", "0", "no"]
+help = "Reject trailing JSON after the first decoded value."
+
+[flags.help]
+env = "JLC_HELP"
+aliases = ["help"]
+short = "h"
+type = "bool"
+true_aliases = ["t", "1", "yes"]
+false_aliases = ["f", "0", "no"]
+help = "Print command usage and exit."
